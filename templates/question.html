@@ -1,18 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 
-  <h1>{{ question.question }}</h1>
+  <h1>{{ question }}</h1>
 
-  <form action="/answer" method="POST">
+  <form action="/answer/{{ question_num }}" method="POST">
+
+  <!-- <form action="/questions/{{ question_num }}" method="POST"> -->
 
       <!-- you should have one item like this for every choice -->
-      <p>
-        <input
-            type="radio"
-            name="answer"
-            value="value-goes-here">
-        choice-goes-here
-      </p>
+      {% for choice in choices %}
+        <p>
+            <input id="{{ choice }}"
+                type="radio"
+                name="answer"
+                value="{{ choice }}">
+                <label for= "{{ choice }}"">
+                    {{ choice }}
+                </label>
+        </p>
+      {% endfor %}
 
     <button>Continue</button>
   </form>
