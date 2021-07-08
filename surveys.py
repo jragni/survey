@@ -4,17 +4,19 @@ class Question:
     def __init__(self, question, choices=None, allow_text=False):
         """Create question (assume Yes/No for choices).
 
-        question = question text
-        choices = list, like ["Yes", "No", "Maybe"]
-        allow_text = T/F to control free-form textual explanation
-        """
+        question = question text {String}
+        choices = list, like ["Yes", "No", "Maybe"] {List[Strings]}
+        allow_text = T/F to control free-form textual explanation {Bool}"""
 
         if not choices:
             choices = ["Yes", "No"]
 
         self.question = question
         self.choices = choices
-        self.allow_text = allow_text
+        self.allow_text = allow_text  # Comments for the question
+
+    #potential TODO: add a __repr___ for data visualization
+    # describing actual question
 
 
 class Survey:
@@ -23,15 +25,16 @@ class Survey:
     def __init__(self, title, instructions, questions):
         """Create questionnaire.
 
-        instructions = textual instructions
-        question = list of Question instances: [q1, q2, ...]
+        title = title of Survey {string}
+        instructions = textual instructions  {string}
+        question = list of Question instances: [q1, q2, ...] {list[[Question]]}
         """
 
         self.title = title
         self.instructions = instructions
         self.questions = questions
 
-
+#TODO: Focus here
 satisfaction_survey = Survey(
     "Customer Satisfaction Survey",
     "Please fill out a survey about your experience with us.",
