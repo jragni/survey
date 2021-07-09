@@ -1,20 +1,22 @@
 {% extends 'base.html' %}
 {% block content %}
-
+  <!-- Question Landing Page -->
   <h1>{{ question }}</h1>
+  <!-- TODO: Clear flash Messages -->
 
+  {%if get_flashed_messages() %}
+    <h2 style="color:red"> {{get_flashed_messages()[0]}}</h2>
+  {% endif %}
+  
   <form action="/answer/{{ question_num }}" method="POST">
-
-  <!-- <form action="/questions/{{ question_num }}" method="POST"> -->
-
-      <!-- you should have one item like this for every choice -->
+    <!-- Generate choices for each question -->
       {% for choice in choices %}
         <p>
             <input id="{{ choice }}"
                 type="radio"
                 name="answer"
                 value="{{ choice }}">
-                <label for= "{{ choice }}"">
+                <label for= "{{ choice }}">
                     {{ choice }}
                 </label>
         </p>

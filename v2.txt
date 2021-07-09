@@ -42,7 +42,7 @@ def ask_questions(question_num):
         return redirect('/completion')
         
 
-    if question_num < len(survey.questions):
+    elif question_num < len(survey.questions):
         # TODO: ADD FLASH MESSAGES TO THE TEMPLATE
         return render_template('question.html', 
         question = survey.questions[question_num].question, 
